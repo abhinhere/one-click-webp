@@ -1,0 +1,54 @@
+{
+  "name": "one-click-webp",
+  "displayName": "One Click WebP Converter",
+  "description": "Convert all images in a folder to WebP format with one command.",
+  "version": "1.0.0",
+  "publisher": "Abhin.C",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:oneClickWebp.convertImages"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "oneClickWebp.convertImages",
+        "title": "Convert Images to WebP"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "oneClickWebp.convertImages",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "WebP Converter",
+      "properties": {
+        "webpConverter.defaultQuality": {
+          "type": "number",
+          "default": 80,
+          "description": "Default WebP quality"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^18.x",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}
